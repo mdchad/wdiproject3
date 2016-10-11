@@ -7,6 +7,9 @@
         <p class="project-byline"><%= goal.user.name %></p>
         <p class="project-content"><%= goal.description %></p>
         <p class="project-content-extra"><%= goal.beneficiary.name %></p>
+        <div class="progress-bar blue stripes orange twelve columns">
+          <span style="width: <%= (goal.pledges_total/goal.target_amount)*100 %>%"></span>
+        </div>
         <ul class="twelve columns">
           <li class="project-footer">
             <strong>$<%= goal.target_amount %></strong>
@@ -27,6 +30,28 @@
             <span class="project-footer-extra">Total pledged</span>
           </li>
         </ul>
+
+        <%= form_for(@pledge) do |f| %>
+          <% if @pledge.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
+              <ul>
+              <% @pledge.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label :amount %>
+            <%= f.number_field :amount, placeholder: "Pledge amount", class: "u-full-width", :required => true %>
+          </div>
+          <%= f.hidden_field :goal_id, :value=> goal.id %>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
         <!-- <p class="project-footer"><%= goal.is_goal_validated %></p>
         <p class="project-footer"><%= goal.is_goal_completed %></p> -->
         <div class="twelve column">

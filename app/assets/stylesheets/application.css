@@ -14,6 +14,87 @@
  *= require_self
  */
 
+
+ .modal {
+     display: none; /* Hidden by default */
+     position: fixed; /* Stay in place */
+     z-index: 1; /* Sit on top */
+     left: 0;
+     top: 0;
+     width: 100%; /* Full width */
+     height: 100%; /* Full height */
+     overflow: auto; /* Enable scroll if needed */
+     background-color: rgb(0,0,0); /* Fallback color */
+     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+     -webkit-animation-name: fadeIn; /* Fade in the background */
+     -webkit-animation-duration: 0.4s;
+     animation-name: fadeIn;
+     animation-duration: 0.4s
+ }
+
+ /* Modal Content */
+ .modal-content {
+     position: fixed;
+     bottom: 250px;
+     background-color: #fefefe;
+     width: 100%;
+     -webkit-animation-name: slideIn;
+     -webkit-animation-duration: 0.4s;
+     animation-name: slideIn;
+     animation-duration: 0.4s
+ }
+
+ /* The Close Button */
+ .close {
+     color: black;
+     float: right;
+     font-size: 25px;
+     font-weight: bold;
+ }
+
+ .close:hover,
+ .close:focus {
+     color: #fc3844;
+     text-decoration: none;
+     cursor: pointer;
+ }
+
+ .modal-header {
+     padding: 2px 16px;
+     background-color: white;
+     color: #333;
+ }
+
+ .modal-body {padding: 2px 16px;}
+
+ .modal-footer {
+     padding: 2px 16px;
+     background-color: #5cb85c;
+     color: white;
+ }
+
+ /* Add Animation */
+ @-webkit-keyframes slideIn {
+     from {bottom: -300px; opacity: 0}
+     to {bottom: 250px; opacity: 1}
+ }
+
+ @keyframes slideIn {
+     from {bottom: -300px; opacity: 0}
+     to {bottom: 250px; opacity: 1}
+ }
+
+ @-webkit-keyframes fadeIn {
+     from {opacity: 0}
+     to {opacity: 1}
+ }
+
+ @keyframes fadeIn {
+     from {opacity: 0}
+     to {opacity: 1}
+ }
+
+
 .nav-right {
   float: right; }
   .nav-right ul {
@@ -26,7 +107,7 @@ nav {
   font-family: "Helvetica Neue", "Roboto", sans-serif;
   font-size: 0.9em;
   color: #FC3844;
-  height: 60px;
+  height: 72px;
   background-color: #FFF;
   z-index: 999;
   width: 100%;
@@ -169,7 +250,9 @@ nav .nav-label {
 nav a {
   color: #1b95e0; } }
 nav .nav-label {
-  background-color: #fff; }
+  background-color: #fff;
+  padding-top: 12px;
+  padding-left: 15px;}
 nav a {
   display: block;
   padding: 0 12px;
@@ -177,7 +260,8 @@ nav a {
   white-space: nowrap;
   line-height: 60px;
   color: #333;
-  font-weight: 400; }
+  font-weight: 500;
+  font-size: 1.1em}
 nav a:hover {
   color: #FC3844; }
 nav a:hover.nav-label {
@@ -268,6 +352,68 @@ label.navbar, input[type=checkbox].navbar {
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
 }
+/*
+duplicate
+*/
+
+#hvr-bounce-to-2right {
+  color: #333;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  height: 38px;
+  padding: 0 30px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+#hvr-bounce-to-2right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #FC3844;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+#hvr-bounce-to-2right:hover, .hvr-bounce-to-right:focus, .hvr-bounce-to-right:active {
+  color: white;
+}
+#hvr-bounce-to-2right:hover:before, .hvr-bounce-to-right:focus:before, .hvr-bounce-to-right:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+
 
 .space-top {
   margin-top: 50px;
@@ -289,13 +435,13 @@ label.navbar, input[type=checkbox].navbar {
 }
 
 .project-content {
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   font-size: 12px;
   color: #3D3D66;
 }
 
 .project-content-extra {
-  margin-bottom: 10px;
+  margin-bottom: 1px;
   font-size: 12px;
   color: #3D3D66;
 }
@@ -305,8 +451,9 @@ label.navbar, input[type=checkbox].navbar {
   font-size: 12px;
   color: #020621;
   float: left;
-  margin-right: 10px;
+  margin-right: 15px;
   list-style: none;
+
 }
 
 .project-footer-extra {
@@ -323,6 +470,7 @@ label.navbar, input[type=checkbox].navbar {
 .change {
   font-size: 5em;
   color: tomato;
+  font-weight: bold;
 }
 
 .whitespace {
@@ -332,6 +480,7 @@ label.navbar, input[type=checkbox].navbar {
 
 .head-title {
   color: #FC3844;
+  margin-top: -25px;
 }
 
 .footer {
@@ -391,4 +540,63 @@ label.navbar, input[type=checkbox].navbar {
 .social-margin {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.progress-bar {
+    background-color: #F1EEEA;
+    height: 10px;
+    width: 350px;
+    margin: 10px 0;
+    border-radius: 5px;
+    /*box-shadow: 0 1px 5px #000 inset, 0 1px 0 #444;*/
+}
+
+.progress-bar span {
+    display: inline-block;
+    margin-bottom: 10px;
+    height: 100%;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .5) inset;
+    transition: width .4s ease-in-out;
+}
+
+.orange span {
+      background-color: #fecf23;
+      background-image: linear-gradient(top, #fecf23, #fd9215);
+}
+
+.newsletter {
+    color: white;
+    margin-top: -14px;
+}
+
+.a-noncolor {
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.a-noncolor:hover {
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.no-bottom {
+  margin-bottom: 0;
+}
+
+.left-space {
+  margin-left: 10px;
+}
+
+#myBtn {
+  background-color: #fc3844;
+  border: none;
+  color: white;
+}
+
+#myBtn:hover{
+  color: white;
+  cursor: pointer;
 }

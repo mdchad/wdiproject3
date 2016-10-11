@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      flash[:notice] = "User Logged In!"
-      redirect_to root_path
+      # flash[:notice] = "User Logged In!"
+      redirect_to goals_path
     else
-      flash[:notice] = "Credentials Invalid!"
+      flash[:notice] = "Invalid email/password!"
       redirect_to login_path
     end
   end
