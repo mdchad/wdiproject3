@@ -1,3 +1,4 @@
+<div class="container">
   <h1>Goals</h1>
     <div class="row">
     <% @goals.each do |goal| %>
@@ -26,8 +27,8 @@
             <span class="project-footer-extra">Total pledged</span>
           </li>
         </ul>
-        <p class="project-footer"><%= goal.is_goal_validated %></p>
-        <p class="project-footer"><%= goal.is_goal_completed %></p>
+        <!-- <p class="project-footer"><%= goal.is_goal_validated %></p>
+        <p class="project-footer"><%= goal.is_goal_completed %></p> -->
         <div class="twelve column">
           <%= link_to 'Pledge', new_pledge_path(:id => goal.id), :method => :get, class: "hvr-bounce-to-right" %>
         </div>
@@ -38,4 +39,4 @@
   <br>
 
   <%= button_to 'Book new goal', new_goal_path, :method => :get, class:"hvr-bounce-to-right" %>
-<button class="hvr-bounce-to-right">hi</button>
+</div>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  root 'goals#index'
+
+  root 'main#index'
 
   # AUTHENTICATION
   get "login" => "sessions#new"
